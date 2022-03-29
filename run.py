@@ -12,5 +12,5 @@ if __name__ == '__main__':
     game.add_player(1000, "Player 4")
     game.find_across_active()
     
-    
-    
+    while True:
+        game.round()

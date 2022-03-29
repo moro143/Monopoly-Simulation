@@ -25,12 +25,12 @@ class Game:
             self.tiles.append(tile)
     
     def add_player(self, base_money=0, name="Player"):
-        self.players.append(classes.player.Player(name, base_money))
+        self.players.append(classes.player.Player(name, base_money, parent=self))
     
     def round(self):
         for player in self.players:
             if player.state == 'Active':
-                player.move(self)
+                player.move()
     
     def find_across_active(self):
         for idx, tile in enumerate(self.tiles):

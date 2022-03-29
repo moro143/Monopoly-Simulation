@@ -3,6 +3,7 @@ class Tile:
     def __init__(self, name='Unknown', across_active=None):
         self.name = name
         self.across_active = across_active
+        self.type = 'Tile'
         
 
 class ProperyTile(Tile):
@@ -26,7 +27,8 @@ class ProperyTile(Tile):
         for _ in self.upgrade_costs:
             self.current_upgrade.append(0)
         self.owner = None
-    
+        self.type = 'PropertyTile'
+        
     def rent_str_list(self, rent):
         self.rent = []
         rent = rent.split('|')
