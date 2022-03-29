@@ -40,4 +40,20 @@ class Player:
                     if active[0] == 'Give':
                         self.money += int(active[1])
         
-        
+    def all_owned_property(self):
+        result = []
+        for i in self.paretn.tiles:
+            if i.type=='PropertyTile' and i.owner==self:
+                result.append(i)
+        return result
+    
+    def active_morgaged_property(self):
+        result_active = []
+        result_morgaged = []
+        all_properties = self.all_active_property()
+        for i in all_properties:
+            if not i.is_morgaged:
+                result_active.append(i)
+            else:
+                result_morgaged.append(i)
+        return result_active, result_morgaged
