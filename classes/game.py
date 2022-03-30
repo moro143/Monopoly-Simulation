@@ -1,6 +1,5 @@
-import classes.tiles
-import utils.resources_import
-import classes.player
+from classes import tiles, player
+from utils import resources_import
 
 class Game:
     def __init__(self):
@@ -9,10 +8,10 @@ class Game:
         self.across_active = []
         
     def tiles_import(self, filename='resources/board_tiles.csv'):
-        tiles_list = utils.resources_import.board_tiles(filename=filename)
+        tiles_list = resources_import.board_tiles(filename=filename)
         for i in tiles_list:
             if i["Property"]=='Yes':
-                tile = classes.tiles.ProperyTile(name=i['Name'],
+                tile = tiles.ProperyTile(name=i['Name'],
                                             basic_price=i["Base Price"],
                                             property_class=i["Class"],
                                             rent=i['Rent'],
@@ -20,12 +19,12 @@ class Game:
                                             upgrade_cost=i['Upgrade Cost'],
                                             across_active=i['Across Active'])
             else:
-                tile = classes.tiles.Tile(name=i['Name'], 
+                tile = tiles.Tile(name=i['Name'], 
                                           across_active=i['Across Active'])
             self.tiles.append(tile)
     
     def add_player(self, base_money=0, name="Player"):
-        self.players.append(classes.player.Player(name, base_money, parent=self))
+        self.players.append(player.Player(name, base_money, parent=self))
     
     def round(self):
         for player in self.players:
