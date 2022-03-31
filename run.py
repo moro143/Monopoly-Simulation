@@ -21,3 +21,4 @@ if __name__ == '__main__':
         
         while True:
             game.round()
+            print(game.players[0].current_place)

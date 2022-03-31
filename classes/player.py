@@ -8,23 +8,24 @@ class Player:
         self.state = 'Active'
         self.parent = parent
     
-    def move(self, max_place=40):
+    def move(self, nr_spaces=utils.utils.dice(), max_place=40):
         starting_point = self.current_place
-        self.current_place += utils.utils.dice()
+        self.current_place += nr_spaces
         if self.current_place >= max_place:
             self.current_place -= max_place
-        ending_point =self.current_place
+        ending_point = self.current_place
         
-        self.across_active_handler(self.parent, starting_point, ending_point)
+        if self.parent != None:
+            self.across_active_handler(self.parent, starting_point, ending_point)
         
-        possible_moves = {}
-        if self.parent.tiles[ending_point].type == "PropertyTile":
-            if self.parent.tiles[ending_point].owner == None:
-                possible_moves['Buy'] = self.parent.tiles[ending_point].basic_price
+            possible_moves = {}
+            if self.parent.tiles[ending_point].type == "PropertyTile":
+                if self.parent.tiles[ending_point].owner == None:
+                    possible_moves['Buy'] = self.parent.tiles[ending_point].basic_price
+                else:
+                    pass # Take money from player, give it to other player
             else:
-                pass # Take money from player, give it to other player
-        else:
-            pass
+                pass
     
     def across_active_handler(self, parent, starting_point, ending_point):    
         # Across actives handler
