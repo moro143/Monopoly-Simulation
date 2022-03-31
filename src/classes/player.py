@@ -1,4 +1,4 @@
-import utils.utils
+from ..utils import utils
 
 class Player:
     def __init__(self, name="Player", money=0, parent=None):
@@ -8,7 +8,7 @@ class Player:
         self.state = 'Active'
         self.parent = parent
     
-    def move(self, nr_spaces=utils.utils.dice(), max_place=40):
+    def move(self, nr_spaces=utils.dice(), max_place=40):
         starting_point = self.current_place
         self.current_place += nr_spaces
         if self.current_place >= max_place:

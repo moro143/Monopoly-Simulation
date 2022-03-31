@@ -1,5 +1,5 @@
-from classes import tiles, player
-from utils import resources_import
+from . import tiles, player
+from ..utils import resources_import
 
 class Game:
     def __init__(self):
@@ -7,7 +7,7 @@ class Game:
         self.players = []
         self.across_active = []
         
-    def tiles_import(self, filename='resources/board_tiles.csv'):
+    def tiles_import(self, filename='./src/resources/board_tiles.csv'):
         tiles_list = resources_import.board_tiles(filename=filename)
         for i in tiles_list:
             if i["Property"]=='Yes':

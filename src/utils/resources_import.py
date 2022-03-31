@@ -1,7 +1,7 @@
 import csv
 import os.path
 
-def board_tiles(filename='resources/board_tiles.csv'):
+def board_tiles(filename='/src/resources/board_tiles.csv'):
     result = []
     with open(filename) as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',')
