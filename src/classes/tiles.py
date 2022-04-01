@@ -20,9 +20,11 @@ class ProperyTile(Tile):
         self.property_class = property_class
         self.rent_str_list(rent)
         self.morgage_value = morgage_value
+        
         if upgrade_cost!='':
             self.upgrade_costs = [int(x) for x in upgrade_cost.split('|')]
-        self.upgrade_costs = []
+        else:
+            self.upgrade_costs = []
         
         self.is_morgaged = False
         self.current_upgrade = []
@@ -37,3 +39,10 @@ class ProperyTile(Tile):
             rent = rent.split('|')
             for i in rent:
                 self.rent.append([int(x) for x in (i.split('/'))])
+    
+    def calculate_current_rent(self):
+        for i, e in reversed(list(enumerate(self.current_upgrade))):
+            if i==0:
+                return self.rent[i][e]
+            elif e!=0:
+                return self.rent[i][e-1]

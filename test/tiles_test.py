@@ -47,6 +47,23 @@ class TestTile(unittest.TestCase):
         self.assertEqual(puppet_property.owner, None, msg='Init input ProperyTile - owner')
         self.assertEqual(puppet_property.is_morgaged, False, msg='Init input ProperyTile - is_morgaged')
         self.assertEqual(puppet_property.upgrade_costs, [40, 50], msg='Init input ProperyTile - upgrade_cost')
+      
+    def test_calculate_current_rent(self):
+        puppet_property = tiles.ProperyTile(name='Property name',
+                                            basic_price=999,
+                                            property_class='blue',
+                                            rent='1/2/3/4/5/6|10',
+                                            morgage_value=999,
+                                            upgrade_cost='40|50',
+                                            across_active='Give*400')
+        puppet_property.current_upgrade = [6, 1]
+        self.assertEqual(puppet_property.calculate_current_rent(), 10, msg='Calculate current rent - hotel')
+        
+        puppet_property.current_upgrade = [3, 0]
+        self.assertEqual(puppet_property.calculate_current_rent(), 4, msg='Calculate current rent - motel')
+        
+        puppet_property.current_upgrade = [0, 0]
+        self.assertEqual(puppet_property.calculate_current_rent(), 1, msg='Calculate current rent - motel')
         
 if __name__=='__main__':
     unittest.main()  

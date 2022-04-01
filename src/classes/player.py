@@ -23,7 +23,13 @@ class Player:
                 if self.parent.tiles[ending_point].owner == None:
                     possible_moves['Buy'] = self.parent.tiles[ending_point].basic_price
                 else:
-                    pass # Take money from player, give it to other player
+                    payment = self.parent.tiles[ending_point].calculate_current_rent()
+                    
+                    if payment<=self.money:
+                        self.money -= payment
+                        self.parent.tiles[ending_point].owner.money += payment
+                    else:
+                        pass # function when not enought money
             else:
                 pass
     
