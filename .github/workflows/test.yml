@@ -4,6 +4,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - name: Setup Python Python 3.10
         uses: actions/setup-python@v3
         with:
@@ -13,4 +14,4 @@ jobs:
           python -m pip install --upgrade pip
       - name: Run Tests
         run: |
-          python -m unittest discover -s test -p "*_test.py"
+          python -m unittest discover -p "*_test.py"
