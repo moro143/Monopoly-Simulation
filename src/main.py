@@ -2,6 +2,8 @@ from .classes import game
 
 
 def run():
+    """_summary_
+    """
     game1 = game.Game()
     game1.tiles_import()
     game1.add_player(1000, "Player 1")

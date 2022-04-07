@@ -1,5 +1,8 @@
 
 class Tile:
+    """_summary_
+    """
+
     def __init__(self, name='Unknown', across_active=None):
         self.name = name
         self.across_active = across_active
@@ -7,6 +10,12 @@ class Tile:
 
 
 class ProperyTile(Tile):
+    """_summary_
+
+    :param Tile: _description_
+    :type Tile: _type_
+    """
+
     def __init__(self, name='Unknown',
                  basic_price=0,
                  property_class='Unknown',
@@ -14,6 +23,23 @@ class ProperyTile(Tile):
                  morgage_value=0,
                  upgrade_cost='0|0',
                  across_active=None):
+        """_summary_
+
+        :param name: _description_, defaults to 'Unknown'
+        :type name: str, optional
+        :param basic_price: _description_, defaults to 0
+        :type basic_price: int, optional
+        :param property_class: _description_, defaults to 'Unknown'
+        :type property_class: str, optional
+        :param rent: _description_, defaults to '0|0'
+        :type rent: str, optional
+        :param morgage_value: _description_, defaults to 0
+        :type morgage_value: int, optional
+        :param upgrade_cost: _description_, defaults to '0|0'
+        :type upgrade_cost: str, optional
+        :param across_active: _description_, defaults to None
+        :type across_active: _type_, optional
+        """
 
         super().__init__(name=name, across_active=across_active)
         self.basic_price = basic_price
@@ -34,6 +60,11 @@ class ProperyTile(Tile):
         self.type = 'PropertyTile'
 
     def rent_str_list(self, rent):
+        """_summary_
+
+        :param rent: _description_
+        :type rent: _type_
+        """
         self.rent = []
         if rent != '':
             rent = rent.split('|')
@@ -41,6 +72,11 @@ class ProperyTile(Tile):
                 self.rent.append([int(x) for x in (i.split('/'))])
 
     def calculate_current_rent(self):
+        """_summary_
+
+        :return: _description_
+        :rtype: _type_
+        """
         for i, e in reversed(list(enumerate(self.current_upgrade))):
             if i == 0:
                 return self.rent[i][e]

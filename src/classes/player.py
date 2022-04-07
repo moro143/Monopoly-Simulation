@@ -2,6 +2,9 @@ from ..utils import utils
 
 
 class Player:
+    """_summary_
+    """
+
     def __init__(self, name="Player", money=0, parent=None):
         """Init player
 
@@ -101,6 +104,11 @@ class Player:
         return result_active, result_morgaged
 
     def all_active_property(self):
+        """_summary_
+
+        :return: _description_
+        :rtype: _type_
+        """
         active_properties = []
         for tile in self.all_owned_property():
             if not tile.is_morgaged:

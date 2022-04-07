@@ -1,14 +1,24 @@
-from . import tiles, player
 from ..utils import resources_import
+from . import player, tiles
 
 
 class Game:
+    """_summary_
+    """
+
     def __init__(self):
+        """_summary_
+        """
         self.tiles = []
         self.players = []
         self.across_active = []
 
     def tiles_import(self, filename='./src/resources/board_tiles.csv'):
+        """_summary_
+
+        :param filename: _description_, defaults to './src/resources/board_tiles.csv'
+        :type filename: str, optional
+        """
         tiles_list = resources_import.board_tiles(filename=filename)
         for i in tiles_list:
             if i["Property"] == 'Yes':
@@ -25,14 +35,25 @@ class Game:
             self.tiles.append(tile)
 
     def add_player(self, base_money=0, name="Player"):
+        """_summary_
+
+        :param base_money: _description_, defaults to 0
+        :type base_money: int, optional
+        :param name: _description_, defaults to "Player"
+        :type name: str, optional
+        """
         self.players.append(player.Player(name, base_money, parent=self))
 
     def round(self):
+        """_summary_
+        """
         for player in self.players:
             if player.state == 'Active':
                 player.move()
 
     def find_across_active(self):
+        """_summary_
+        """
         for idx, tile in enumerate(self.tiles):
             if tile.across_active:
                 self.across_active.append(idx)
