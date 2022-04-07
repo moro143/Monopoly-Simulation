@@ -10,7 +10,7 @@ class TestGame(unittest.TestCase):
     :type unittest: _type_
     """
     @classmethod
-    def setUp(cls):
+    def setUpClass(cls):
         """_summary_
         """
         cls.puppet_game = Game()

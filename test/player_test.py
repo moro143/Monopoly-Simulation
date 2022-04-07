@@ -47,21 +47,5 @@ class TestPlayer(unittest.TestCase):
         self.assertEqual(player_puppet.current_place, 4,
                          msg='Move no parent - current_place(through start)')
 
-    def test_across_active_handler(self):
-        """_summary_
-        """
-        pass
-
-    def test_all_owned_property(self):
-        """_summary_
-        """
-        pass
-
-    def test_active_morgaged_property(self):
-        """_summary_
-        """
-        pass
-
-
 if __name__ == '__main__':
     unittest.main()
