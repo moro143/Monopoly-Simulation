@@ -47,9 +47,9 @@ class Game:
     def round(self):
         """_summary_
         """
-        for player in self.players:
-            if player.state == 'Active':
-                player.move()
+        for p_l in self.players:
+            if p_l.state == 'Active':
+                p_l.move()
 
     def find_across_active(self):
         """_summary_

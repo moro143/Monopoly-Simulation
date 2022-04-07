@@ -1,5 +1,4 @@
 import csv
-import os.path
 
 
 def board_tiles(filename='/src/resources/board_tiles.csv'):
