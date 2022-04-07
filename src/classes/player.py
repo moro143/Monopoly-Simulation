@@ -36,8 +36,7 @@ class Player:
         ending_point = self.current_place
 
         if self.parent is not None:
-            self.across_active_handler(
-                self.parent, starting_point, ending_point)
+            self.across_active_handler(starting_point, ending_point)
 
             possible_moves = {}
             if self.parent.tiles[ending_point].type == "PropertyTile":

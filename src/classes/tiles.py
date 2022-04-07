@@ -80,5 +80,6 @@ class ProperyTile(Tile):
         for i, e in reversed(list(enumerate(self.current_upgrade))):
             if i == 0:
                 return self.rent[i][e]
-            elif e != 0:
+            if e != 0:
                 return self.rent[i][e-1]
+        return -1
